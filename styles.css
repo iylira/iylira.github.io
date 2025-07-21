@@ -1,4 +1,4 @@
-/* styles.css */
+/* Global styles */
 * {
     margin: 0;
     padding: 0;
@@ -12,12 +12,13 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('Images/background-image.jpg'); /* Reference the image in the images folder */
+    background-image: url('Images/background-image.jpg'); /* Background image URL */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 
+/* Main container to center everything */
 .container {
     text-align: center;
     color: white;
@@ -29,27 +30,37 @@ body, html {
     position: relative;
 }
 
-.static-title {
-    font-size: 4em;
-    margin-bottom: 20px;
-    font-family: 'Dancing Script', cursive; /* Cursive font */
-    font-weight: bold;
-    z-index: 2;
+/* Static title container */
+.static-title-container {
+    z-index: 2; /* Ensure it's above typing effect */
 }
 
+/* Static title */
+.static-title {
+    font-size: 4em;
+    font-weight: bold;
+    margin-bottom: 20px; /* Space between title and typing effect */
+}
+
+/* Typing effect container */
+.typing-effect-container {
+    z-index: 1;
+}
+
+/* Typing effect styling */
 .typing-effect {
     font-size: 1.5em;
     font-family: 'Fira Code', monospace;
-    white-space: nowrap; /* Prevent text from wrapping */
-    overflow: visible; /* Ensure text stays visible */
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: visible;
     display: inline-block;
     border-right: 3px solid white; /* Cursor effect */
     padding-right: 5px;
-    z-index: 1;
-    width: auto; /* Allow it to expand based on content */
-    max-width: none; /* Remove max-width constraint */
+    width: auto; /* Allow it to expand naturally */
+    max-width: none; /* No max-width restriction */
 }
 
+/* Typing effect animation */
 @keyframes blink {
     50% {
         border-color: transparent;
