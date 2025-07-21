@@ -1,9 +1,9 @@
 // script.js
 const texts = [
-    "A language for the future of programming.",
-    "Designed for simplicity and speed.",
+    "whisper("Hello World")",
+    "Designed for beauty and speed.",
     "Powerful, expressive, and intuitive.",
-    "Launching soon... stay tuned!"
+    "Under Development..."
 ];
 
 let currentTextIndex = 0;
