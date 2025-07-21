@@ -52,7 +52,7 @@ body, html {
 
 /* Typing effect styling */
 #typing-text {
-    font-size: 1.8em;
+    font-size: 1.2em;
     font-family: 'Fira Code', monospace; /* Monospace font for the typing effect */
     white-space: nowrap; /* Prevent text from wrapping */
     overflow: hidden; /* Ensures text is hidden while typing */
