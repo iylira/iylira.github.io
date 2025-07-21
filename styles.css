@@ -1,0 +1,46 @@
+/* styles.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://via.placeholder.com/1500'); /* Placeholder image */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.container {
+    text-align: center;
+    color: white;
+}
+
+.static-title {
+    font-size: 4em;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.typing-effect {
+    font-size: 1.5em;
+    font-family: 'Courier New', monospace;
+    white-space: nowrap;  /* Prevent text from wrapping */
+    overflow: hidden;
+    display: inline-block;
+    border-right: 3px solid white; /* Cursor effect */
+    padding-right: 5px;
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
