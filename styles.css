@@ -61,3 +61,9 @@ body, html {
     padding-right: 5px;
     visibility: visible; /* Make sure it's visible */
 }
+
+@media (max-width: 768px) {
+    #typing-text {
+        font-size: 1em; /* Slightly smaller font size for tablets */
+    }
+}
