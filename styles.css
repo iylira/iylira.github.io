@@ -12,7 +12,7 @@ body, html {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url('Images/background-image.jpg'); /* Background image URL */
+    background-image: url('https://iylira.github.io/Images/background.jpg'); /* Background image URL */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -38,6 +38,7 @@ body, html {
 /* Static title */
 .static-title {
     font-size: 4em;
+    font-family: 'Dancing Script', cursive;
     font-weight: bold;
     margin-bottom: 20px; /* Space between title and typing effect */
 }
@@ -45,24 +46,41 @@ body, html {
 /* Typing effect container */
 .typing-effect-container {
     z-index: 1;
+    display: inline-block; /* Ensures the text container doesn't take up extra vertical space */
+    position: relative; /* Relative positioning to make it work smoothly */
 }
 
 /* Typing effect styling */
 .typing-effect {
     font-size: 1.5em;
     font-family: 'Fira Code', monospace;
-    white-space: nowrap; /* Prevent wrapping */
-    overflow: visible;
+    white-space: nowrap; /* Prevent text from wrapping */
+    overflow: hidden; /* Ensure no overflowing text */
     display: inline-block;
     border-right: 3px solid white; /* Cursor effect */
     padding-right: 5px;
     width: auto; /* Allow it to expand naturally */
     max-width: none; /* No max-width restriction */
+    visibility: visible; /* Ensure it is visible */
 }
 
 /* Typing effect animation */
+@keyframes typing {
+    0% {
+        width: 0%;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
 @keyframes blink {
     50% {
         border-color: transparent;
     }
+}
+
+/* Typing effect animation applied */
+.typing-effect {
+    animation: typing 3s steps(30) 1s 1 normal both, blink 0.75s step-end infinite;
 }
