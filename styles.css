@@ -21,22 +21,31 @@ body, html {
 .container {
     text-align: center;
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: relative;
 }
 
 .static-title {
     font-size: 4em;
     margin-bottom: 20px;
     font-weight: bold;
+    z-index: 2; /* Make sure title stays above the typing text */
 }
 
 .typing-effect {
     font-size: 1.5em;
-    font-family: 'Courier New', monospace;
-    white-space: nowrap;  /* Prevent text from wrapping */
+    font-family: 'Fira Code', monospace; /* Modern programming font */
+    white-space: nowrap; /* Prevent text from wrapping */
     overflow: hidden;
     display: inline-block;
     border-right: 3px solid white; /* Cursor effect */
     padding-right: 5px;
+    max-width: 80%; /* Set max width to prevent long lines */
+    z-index: 1; /* Ensure typing text is below the title */
 }
 
 @keyframes blink {
