@@ -1,6 +1,6 @@
 // script.js
 const texts = [
-    "whisper("Hello World")",
+    "whisper(Hello World)",
     "Designed for beauty and speed.",
     "Powerful, expressive, and intuitive.",
     "Under Development..."
