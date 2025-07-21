@@ -1,9 +1,9 @@
 // script.js
 const texts = [
-    "whisper(Hello World)",
-    "Designed for beauty and speed.",
-    "Powerful, expressive, and intuitive.",
-    "Under Development..."
+    "< whisper(Hello World) >",
+    "< Designed for beauty and speed. >",
+    "< Powerful, expressive, and intuitive. >",
+    "< Under Development... >"
 ];
 
 let currentTextIndex = 0;
