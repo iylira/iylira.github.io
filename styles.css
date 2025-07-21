@@ -46,30 +46,30 @@ body, html {
 /* Typing effect container */
 .typing-effect-container {
     z-index: 1;
-    display: inline-block; /* Ensures the text container doesn't take up extra vertical space */
-    position: relative; /* Relative positioning to make it work smoothly */
+    display: inline-block; /* Ensures text is displayed correctly */
+    position: relative;
+    margin-top: 20px; /* Adds some spacing below the static title */
 }
 
 /* Typing effect styling */
 .typing-effect {
     font-size: 1.5em;
     font-family: 'Fira Code', monospace;
-    white-space: nowrap; /* Prevent text from wrapping */
-    overflow: hidden; /* Ensure no overflowing text */
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Ensure it hides any text that's not typed yet */
     display: inline-block;
     border-right: 3px solid white; /* Cursor effect */
     padding-right: 5px;
-    width: auto; /* Allow it to expand naturally */
-    max-width: none; /* No max-width restriction */
-    visibility: visible; /* Ensure it is visible */
+    visibility: visible; /* Make sure it's visible */
+    width: 0; /* Start with no width */
 }
 
 /* Typing effect animation */
 @keyframes typing {
-    0% {
+    from {
         width: 0%;
     }
-    100% {
+    to {
         width: 100%;
     }
 }
@@ -80,7 +80,7 @@ body, html {
     }
 }
 
-/* Typing effect animation applied */
+/* Apply typing animation */
 .typing-effect {
     animation: typing 3s steps(30) 1s 1 normal both, blink 0.75s step-end infinite;
 }
