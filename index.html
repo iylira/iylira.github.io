@@ -3,24 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iylira- A Custom-Built Language</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet"> <!-- Cursive font -->
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>Iylira - Intuitive & Expressive</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Static Title Container -->
-        <div class="static-title-container">
-            <h1 class="static-title">Iylira</h1>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-i">i</span>
+                <span class="logo-text">ylira</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#features" class="nav-link">Features</a></li>
+                <li><a href="#code" class="nav-link">Syntax</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <!-- Typing Effect Container -->
-        <div class="typing-effect-container">
-            <div id="typing-text"></div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="logo-container">
+                <div class="logo-i-large">i</div>
+            </div>
+            <h1 class="hero-title">Iylira</h1>
+            <p class="hero-tagline">intuitive & expressive</p>
+            <div class="typing-container">
+                <span class="typing-text"></span>
+                <span class="cursor">|</span>
+            </div>
+            <div class="status-badge">Under Development</div>
         </div>
-    </div>
+    </section>
 
-    <script src="script.js"></script> <!-- Linking the JavaScript -->
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Why Iylira?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🌙</div>
+                    <h3>Sweet & Calm Syntax</h3>
+                    <p>Write code that reads like poetry. Iylira's gentle keywords make programming feel natural and expressive.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Built for Speed</h3>
+                    <p>Powered by C and Python, Iylira combines elegant syntax with high-performance execution.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✨</div>
+                    <h3>Intuitive Design</h3>
+                    <p>From <code>whisper()</code> to <code>drift through</code>, every keyword is chosen to be clear and memorable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Comparison Section -->
+    <section id="code" class="code-section">
+        <div class="container">
+            <h2 class="section-title">See the Difference</h2>
+            <p class="section-subtitle">Watch how Python transforms into Iylira's elegant syntax</p>
+            
+            <div class="code-comparison">
+                <div class="code-tabs">
+                    <button class="tab-button active" data-lang="python">Python</button>
+                    <button class="tab-button" data-lang="iylira">Iylira</button>
+                </div>
+                
+                <div class="code-display">
+                    <pre class="code-block python-code active"><code><span class="comment"># Calculate factorial</span>
+<span class="keyword">number</span> = <span class="number">5</span>
+<span class="keyword">factorial</span> = <span class="number">1</span>
+
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="function">range</span>(<span class="number">1</span>, number + <span class="number">1</span>):
+    factorial = factorial * i
+
+<span class="function">print</span>(<span class="string">"Factorial of "</span> + <span class="function">str</span>(number) + <span class="string">" is "</span> + <span class="function">str</span>(factorial))</code></pre>
+
+                    <pre class="code-block iylira-code"><code><span class="comment"># Calculate factorial</span>
+<span class="keyword">let</span> <span class="type">int</span>(number) = <span class="number">5</span>
+<span class="keyword">let</span> <span class="type">int</span>(factorial) = <span class="number">1</span>
+
+<span class="keyword">drift</span> i <span class="keyword">through</span>(<span class="number">1</span>, number + <span class="number">1</span>) {
+    factorial = factorial * i
+}
+
+<span class="function">whisper</span>(<span class="string">"Factorial of "</span> + <span class="function">str</span>(number) + <span class="string">" is "</span> + <span class="function">str</span>(factorial))</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Philosophy</h2>
+            <div class="philosophy-content">
+                <p>Iylira is more than a programming language—it's a reimagining of how we communicate with computers. Built on the belief that code should be both beautiful and powerful, Iylira combines elegant, intuitive syntax with high performance.</p>
+                <p>Every keyword, every design choice is crafted to make your code feel natural and expressive. Write programs that are a joy to read and blazingly fast to execute.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Iylira Official. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://github.com/iylira" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
