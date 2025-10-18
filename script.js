@@ -38,9 +38,39 @@ function typeMessage() {
     setTimeout(typeMessage, isDeleting ? deletingSpeed : typingSpeed);
 }
 
-// Start typing animation when page loads
+// Particle Animation
+function createParticles() {
+    const particlesContainer = document.getElementById('particles');
+    const particleCount = 50;
+
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.className = 'particle';
+        
+        // Random size between 1-3px
+        const size = Math.random() * 2 + 1;
+        particle.style.width = `${size}px`;
+        particle.style.height = `${size}px`;
+        
+        // Random horizontal position
+        particle.style.left = `${Math.random() * 100}%`;
+        
+        // Random animation duration between 10-25 seconds
+        const duration = Math.random() * 15 + 10;
+        particle.style.animationDuration = `${duration}s`;
+        
+        // Random delay to stagger the animations
+        const delay = Math.random() * 10;
+        particle.style.animationDelay = `${delay}s`;
+        
+        particlesContainer.appendChild(particle);
+    }
+}
+
+// Start animations when page loads
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(typeMessage, 500);
+    createParticles();
 });
 
 // Smooth Scroll for Navigation Links
@@ -108,5 +138,16 @@ window.addEventListener('scroll', () => {
         if (link.getAttribute('href') === `#${current}`) {
             link.classList.add('active');
         }
+    });
+});
+
+// Parallax effect for floating elements on scroll
+window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const floatingElements = document.querySelectorAll('.floating-element');
+    
+    floatingElements.forEach((element, index) => {
+        const speed = 0.3 + (index * 0.1);
+        element.style.transform = `translateY(${scrolled * speed}px)`;
     });
 });
