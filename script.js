@@ -1,48 +1,112 @@
-// script.js
-const texts = [
-    "< whisper(Hello World) >",
-    "< Designed for beauty and speed. >",
-    "< Powerful, expressive, and intuitive. >",
-    "< Under Development... >"
+// Typing Animation
+const messages = [
+    "A custom built language",
+    "Designed for beauty and speed",
+    'whisper("Hello World!")'
 ];
 
-let currentTextIndex = 0;
-let currentCharIndex = 0;
+let messageIndex = 0;
+let charIndex = 0;
 let isDeleting = false;
-let typingSpeed = 150; // Speed of typing
-let deletingSpeed = 50; // Speed of deleting
-let pauseBetweenWords = 2000; // Pause after completing a word
+const typingSpeed = 100;
+const deletingSpeed = 50;
+const pauseTime = 2000;
 
-const typingTextElement = document.getElementById("typing-text");
+function typeMessage() {
+    const typingText = document.querySelector('.typing-text');
+    const currentMessage = messages[messageIndex];
 
-function typeText() {
-    const currentText = texts[currentTextIndex];
+    if (!isDeleting) {
+        typingText.textContent = currentMessage.substring(0, charIndex + 1);
+        charIndex++;
 
-    // Type the current character
-    if (isDeleting) {
-        typingTextElement.textContent = currentText.substring(0, currentCharIndex--);
-    } else {
-        typingTextElement.textContent = currentText.substring(0, currentCharIndex++);
-    }
-
-    // If the text is fully typed, delete after a short pause
-    if (!isDeleting && currentCharIndex === currentText.length) {
-        setTimeout(() => {
+        if (charIndex === currentMessage.length) {
             isDeleting = true;
-            typeText();
-        }, pauseBetweenWords);
-    } 
-    // If it's deleting and reaches the beginning, move to the next text
-    else if (isDeleting && currentCharIndex === 0) {
-        isDeleting = false;
-        currentTextIndex = (currentTextIndex + 1) % texts.length;
-        setTimeout(typeText, 500); // Short pause before typing next text
+            setTimeout(typeMessage, pauseTime);
+            return;
+        }
     } else {
-        setTimeout(typeText, isDeleting ? deletingSpeed : typingSpeed);
+        typingText.textContent = currentMessage.substring(0, charIndex - 1);
+        charIndex--;
+
+        if (charIndex === 0) {
+            isDeleting = false;
+            messageIndex = (messageIndex + 1) % messages.length;
+        }
     }
+
+    setTimeout(typeMessage, isDeleting ? deletingSpeed : typingSpeed);
 }
 
-// Start the typing effect when the page loads
-window.onload = function() {
-    typeText();
+// Start typing animation when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(typeMessage, 500);
+});
+
+// Smooth Scroll for Navigation Links
+document.querySelectorAll('.nav-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('href');
+        const targetSection = document.querySelector(targetId);
+        targetSection.scrollIntoView({ behavior: 'smooth' });
+    });
+});
+
+// Code Tab Switching
+const tabButtons = document.querySelectorAll('.tab-button');
+const codeBlocks = document.querySelectorAll('.code-block');
+
+tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const lang = button.getAttribute('data-lang');
+
+        // Remove active class from all tabs and code blocks
+        tabButtons.forEach(btn => btn.classList.remove('active'));
+        codeBlocks.forEach(block => block.classList.remove('active'));
+
+        // Add active class to clicked tab and corresponding code block
+        button.classList.add('active');
+        document.querySelector(`.${lang}-code`).classList.add('active');
+    });
+});
+
+// Scroll Animation for Sections
+const observerOptions = {
+    threshold: 0.2,
+    rootMargin: '0px 0px -100px 0px'
 };
+
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
+
+// Observe all sections that need animation
+document.querySelectorAll('.features, .code-section, .about').forEach(section => {
+    observer.observe(section);
+});
+
+// Active Navigation Link on Scroll
+window.addEventListener('scroll', () => {
+    let current = '';
+    const sections = document.querySelectorAll('section');
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (scrollY >= (sectionTop - 200)) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+});
