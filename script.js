@@ -67,10 +67,44 @@ function createParticles() {
     }
 }
 
+// Footer stars animation
+function createFooterStars() {
+    const footerStars = document.querySelector('.footer-stars');
+    const starCount = 30;
+
+    for (let i = 0; i < starCount; i++) {
+        const star = document.createElement('div');
+        star.className = 'particle';
+        
+        const size = Math.random() * 2 + 0.5;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.left = `${Math.random() * 100}%`;
+        star.style.top = `${Math.random() * 100}%`;
+        
+        const duration = Math.random() * 3 + 2;
+        star.style.animation = `twinkle ${duration}s ease-in-out infinite`;
+        star.style.animationDelay = `${Math.random() * 2}s`;
+        
+        footerStars.appendChild(star);
+    }
+}
+
+// Twinkle animation for footer stars
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes twinkle {
+        0%, 100% { opacity: 0.2; }
+        50% { opacity: 1; }
+    }
+`;
+document.head.appendChild(style);
+
 // Start animations when page loads
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(typeMessage, 500);
     createParticles();
+    createFooterStars();
 });
 
 // Smooth Scroll for Navigation Links
